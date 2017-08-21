@@ -1,2 +1,2 @@
 # ansible-troclapi
-Ansible module for Trocla REST Api
+Ansible module for Trocla REST Api WIP
