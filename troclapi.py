@@ -4,6 +4,7 @@
 import requests
 import ansible
 from ansible.module_utils.basic import AnsibleModule
+from packaging import version
 
 # Import json and yaml as custom names to avoid lib
 # issues with Ansible
@@ -12,10 +13,10 @@ import yaml as lib_yaml
 
 # Only required for Ansible >= 2.12, else we can pass
 try:
-    from ansible.module_utils.common import json
-    from ansible.module_utils.common import yaml
+  from ansible.module_utils.common import json
+  from ansible.module_utils.common import yaml
 except:
-    pass
+  pass
 
 
 DOCUMENTATION = '''
@@ -23,7 +24,7 @@ DOCUMENTATION = '''
 module: trolcapi
 short_description: "Troclapi usage for Ansible"
 description:
-  - "Ansible module to connect to troclapi. Please see api documentation for more informations https://github.com/fe80/troclapi"  # noqa: E501
+  - "Ansible module to connect to troclapi. Please see api documentation for more informations https://claranet.pages.fr.clara.net/rmp/cs-webops-ga/puppet/tools/projects/troclapi/"  # noqa: E501
 author: Fe80
 options:
   token:
@@ -114,14 +115,17 @@ EXAMPLES = '''
 _ansible_ver = float('.'.join(ansible.__version__.split('.')[:2]))
 
 secret = '''$ANSIBLE_VAULT;1.1;AES256
-32396232373930313037643031376265643665313365333432393561393465323964616133343638
-6438343738663336666361343030636631336135613066650a346530626366663463356562636233
-61663261656534373862663737303437653734333734643864363961383062623338336133383330
-6364333838326137610a656265373261323232383664376166643336663865363333663836356138
-38383831633732666434613561653635323461633365366234366239313930333035
+62366137333364653764653438356264336464633930336533636432313562323464656565313732
+3130323362356338396539303236356134376439643666650a356134623630366665303435306439
+34636365303539626666373161343734666133336361666662363166373630383231313034303938
+3031326133396536610a353163393336376638393233313166633738343435316364646532383336
+35333164393530393265376339363634336536336663316336613365653737343233306662356238
+66313561343164363339306634303164336465346339336332383032366364323430316462396630
+33336435323233316139643630373561363238303262626663343236393465653863646439313961
+30373630336465383535
 '''
 
-NDD = 'troclapi'
+NDD = 'troclapi.fr.clara.net'
 METHODS = {
     'get': 'GET',
     'create': 'POST',
